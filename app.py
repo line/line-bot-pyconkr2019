@@ -76,7 +76,7 @@ def get_programs(topic: str = None) -> TemplateSendMessage:
         if not topic or topic in program['name']
     ][:10]
     return TemplateSendMessage(
-        alt_text='Programs',
+        alt_text='https://www.pycon.kr/program/talks',
         template=CarouselTemplate(columns=columns)
     ) if len(columns) > 0 else TextSendMessage(
         '말씀하신 주제에 관련된 발표나 정보를 찾지 못했어요. 😢'
