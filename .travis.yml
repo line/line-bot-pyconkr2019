@@ -1,0 +1,8 @@
+language: python
+python:
+- '3.6'
+before_install:
+- openssl aes-256-cbc -K $encrypted_5f2b550f866c_key -iv $encrypted_5f2b550f866c_iv -in zappa_settings.json.enc -out zappa_settings.json -d
+- flake8 .
+after_success:
+- test $TRAVIS_BRANCH = "master" && zappa update production
