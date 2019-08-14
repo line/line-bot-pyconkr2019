@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/line/line-bot-pyconkr2019.svg?token=oioFqJsXLNtxovczS4Xj&branch=master)](https://travis-ci.com/line/line-bot-pyconkr2019)
+
 ## 소개
 - '파이콘 한국 2019 도우미' LINE bot 입니다.
 - 이 bot은 파이콘 한국 2019를 더욱 재미있게 즐기기 위해 LINE 개발자들에 의해 만들어졌으며 파이콘 한국의 공식 봇은 아닙니다.  
