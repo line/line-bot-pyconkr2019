@@ -5,11 +5,13 @@ import glob
 modules = glob.glob(join(dirname(__file__), "*.py"))
 skills = dict()
 
+
 def add_skill(pattern):
     def wrapper(func):
         skills[pattern] = func
         return func
     return wrapper
+
 
 __all__ = [
     basename(f)[:-3]

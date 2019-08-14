@@ -15,7 +15,6 @@
 
 import os
 import re
-import sys
 
 import requests
 from flask import Flask, request, abort
@@ -86,7 +85,6 @@ def get_message(from_message):
 
 @app.route("/callback", methods=['POST'])
 def callback():
-    # get channel_secret and channel_access_token from your environment variable
     channel_secret = os.getenv('LINE_CHANNEL_SECRET', None)
     channel_access_token = os.getenv('LINE_CHANNEL_ACCESS_TOKEN', None)
     if not channel_secret:

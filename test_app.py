@@ -1,5 +1,6 @@
 from app import get_message
 
+
 def test_message():
     response = get_message('장소')
     assert response.type == 'location'
