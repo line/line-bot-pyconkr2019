@@ -9,4 +9,4 @@ before_install:
 script:
 - flake8 .
 after_success:
-- test $TRAVIS_BRANCH = "master" && zappa update production
+- test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && zappa update production
