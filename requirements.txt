@@ -4,3 +4,4 @@ Flask==1.1.1
 line-bot-sdk==1.12.1
 gunicorn==19.9.0
 zappa==0.48.2
+pytest==5.0.1

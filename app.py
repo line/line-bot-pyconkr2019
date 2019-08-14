@@ -14,38 +14,25 @@
 
 
 import os
-import sys
+import re
 
 import requests
 from flask import Flask, request, abort
-from linebot import (
-    LineBotApi, WebhookParser
-)
-from linebot.exceptions import (
-    InvalidSignatureError
-)
-from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
-    TemplateSendMessage, MessageAction, ButtonsTemplate,
-    LocationSendMessage, URIAction,
-    CarouselTemplate, CarouselColumn,
-)
+from linebot import LineBotApi, WebhookParser
+from linebot.exceptions import InvalidSignatureError
+from linebot.models import (MessageEvent,
+                            TextMessage,
+                            TextSendMessage,
+                            TemplateSendMessage,
+                            URIAction,
+                            CarouselTemplate,
+                            CarouselColumn,)
+
+from skills import * # noqa
+from skills import skills
 
 
 app = Flask(__name__)
-
-# get channel_secret and channel_access_token from your environment variable
-channel_secret = os.getenv('LINE_CHANNEL_SECRET', None)
-channel_access_token = os.getenv('LINE_CHANNEL_ACCESS_TOKEN', None)
-if channel_secret is None:
-    print('Specify LINE_CHANNEL_SECRET as environment variable.')
-    sys.exit(1)
-if channel_access_token is None:
-    print('Specify LINE_CHANNEL_ACCESS_TOKEN as environment variable.')
-    sys.exit(1)
-
-line_bot_api = LineBotApi(channel_access_token)
-parser = WebhookParser(channel_secret)
 
 
 def get_programs(topic: str = None) -> TemplateSendMessage:
@@ -85,8 +72,30 @@ def get_programs(topic: str = None) -> TemplateSendMessage:
     )
 
 
+def get_message(from_message):
+    for pattern, skill in skills.items():
+        if re.match(pattern, from_message):
+            return skill(from_message)
+
+    if '프로그램' in from_message:
+        return get_programs()
+    else:
+        return get_programs(from_message)
+
+
 @app.route("/callback", methods=['POST'])
 def callback():
+    channel_secret = os.getenv('LINE_CHANNEL_SECRET', None)
+    channel_access_token = os.getenv('LINE_CHANNEL_ACCESS_TOKEN', None)
+    if not channel_secret:
+        print('Specify LINE_CHANNEL_SECRET as environment variable.')
+        abort(500)
+    if not channel_access_token:
+        print('Specify LINE_CHANNEL_ACCESS_TOKEN as environment variable.')
+        abort(500)
+
+    line_bot_api = LineBotApi(channel_access_token)
+    parser = WebhookParser(channel_secret)
     signature = request.headers['X-Line-Signature']
 
     # get request body as text
@@ -106,31 +115,7 @@ def callback():
         if not isinstance(event.message, TextMessage):
             continue
 
-        if '장소' in event.message.text:
-            message = LocationSendMessage(
-                title='장소',
-                address='서울 강남구 영동대로 513 (삼성동) 코엑스 그랜드볼룸',
-                latitude=37.5130556,
-                longitude=127.0586111
-            )
-        elif '메뉴' in event.message.text:
-            message = TemplateSendMessage(
-                alt_text='Welcome!',
-                template=ButtonsTemplate(
-                    thumbnail_image_url='https://www.pycon.kr/static/images/og-pyconkr-image.png', # noqa
-                    title='환영합니다!',
-                    text='안녕하세요. 파이콘 한국 2019의 행사 참여를 돕는 LINE 챗봇입니다. 궁금하신 것을 말씀해주세요!', # noqa
-                    actions=[
-                        MessageAction(label='장소', text='장소'),
-                        MessageAction(label='프로그램', text='프로그램'),
-                        URIAction(label='홈페이지', uri='https://www.pycon.kr/')
-                    ]
-                )
-            )
-        elif '프로그램' in event.message.text:
-            message = get_programs()
-        else:
-            message = get_programs(event.message.text)
-        line_bot_api.reply_message(event.reply_token, message)
+        line_bot_api.reply_message(event.reply_token,
+                                   get_message(event.message.text))
 
     return 'OK'
