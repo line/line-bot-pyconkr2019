@@ -36,4 +36,4 @@ Apache 2.0
 
 ## LINE Bot 친구 추가하기
 
-**![LINE 친구추가](https://qr-official.line.me/sid/M/121dnbqy.png)**
+![LINE 친구추가](/assets/img/bot_qrcode.png)
