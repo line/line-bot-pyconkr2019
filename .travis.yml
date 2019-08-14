@@ -12,4 +12,4 @@ script:
 - coverage run -m pytest .
 after_success:
 - coveralls
-- test $TRAVIS_BRANCH = "master" && zappa update production
+- test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && zappa update production
