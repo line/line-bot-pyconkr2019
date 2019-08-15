@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <title>Chat with PyCon KR 2019 | CONNECT THE PYTHONISTAS</title><link href="/favicon.ico" rel="icon" type="image/ico" /><link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet" /><link href="https://static.line-scdn.net/koromo/edge/2.4/koromo.css" rel="stylesheet" /><link href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" rel="stylesheet" /><link href="https://static.line-scdn.net/laicon/edge/1.4/laicon.min.css" rel="stylesheet" /><link href="https://static.line-scdn.net/flag-icon-css/edge/3.3.0/css/flag-icon.min.css" rel="stylesheet" /><script src="https://static.line-scdn.net/koromo/edge/2.4/koromo.js"></script>
+  </head>
+  <body><div class="d-flex flex-nowrap h-100" id="wrapper">
+  <aside class="overflow-auto w-fix-480 flex-shrink-0 flex-grow-0 position-relative d-none d-lg-block" id="aside-primary">
+    <div id="aside-btn-upper">
+      <a class="nav-btn active" href="#"><i class="fas fa-comment"></i></a>
+    </div>
+    <div class="d-flex flex-column bg-white h-100">
+      <div class="border-bottom flex-grow-0 flex-shrink-0 p-2">
+        <div class="form-row align-items-center">
+          <div class="col">
+            <div class="dropdown">
+              <a class="text-dark" data-toggle="dropdown" href="#"><i class="fas fa-bars fa-fw text-info mr-2"></i>All</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item active" href="#">All</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex-fill overflow-y-auto">
+        <div class="list-group list-group-flush">
+          <a class="list-group-item list-group-item-action d-flex flex-nowrap align-items-center border-0 active" href="#">
+            <div class="avatar avatar-sm mr-2 flex-shrink-0 flex-grow-0">
+              <img class="rounded-circle" src="https://www.pycon.kr/static/favicon/apple-icon-180x180.png" title="mary"><span class="avatar-badge badge badge-pin badge-primary"></span>
+            </div>
+            <div class="text-truncate flex-1">
+              <h6 class="mb-0">
+                PyCon KR 2019
+              </h6>
+            </div>
+            <div class="ml-3 flex-shrink-0 flex-grow-0">
+              <i class="fas fa-star text-primary"></i>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <main class="flex-1 border-right border-left d-flex flex-column position-relative h-100">
+    <div class="px-3 py-2 bg-light d-flex justify-content-between align-items-center border-bottom flex-grow-0 flex-shrink-0">
+      <h4 class="mb-0">
+        <div class="avatar avatar-md mr-2">
+          <img class="rounded-circle" src="https://www.pycon.kr/static/favicon/apple-icon-180x180.png" title="Mary"><span class="badge badge-pin badge-primary"></span>
+        </div>
+        PyCon KR 2019<small class="text-muted ml-2 d-none d-lg-inline">CONNECT THE PYTHONISTAS</small>
+      </h4>
+    </div>
+    <div class="p-3 bg-white flex-fill overflow-y-auto" id="chat-room">
+      <div class="chatsys">
+        <div class="chatsys-content">
+          Today
+        </div>
+      </div>
+    </div>
+    <div class="p-3 border-top flex-grow-0 flex-shrink-0">
+      <div class="input-group">
+        <input class="form-control form-control-lg" id="message-form" placeholder="Message to PyCon KR 2019..." type="text">
+      </div>
+    </div>
+  </main>
+</div>
+<div aria-hidden="true" class="modal fade" id="edit-name" role="dialog" tabindex="-1">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">
+          Edit name
+        </h5>
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true"> &times;</span></button>
+      </div>
+      <div class="modal-body">
+        <input class="form-control form-control-lg" type="text" value="Mary">
+      </div>
+      <div class="d-flex flex-row">
+        <button class="btn btn-lg btn-primary rounded-0 flex-1" data-dismiss="modal" type="button"> Save</button><button class="btn btn-lg btn-secondary rounded-0 flex-1" data-dismiss="modal" type="button"> Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/template" id="my-message-template">
+    <div class="chat chat-primary chat-reverse chat-text-dark">
+        <div class="chat-content">
+            <div class="chat-body w-max-520">
+            <div class="chat-main">
+                <div class="chat-item baloon">
+                <div class="chat-item-text">
+                    {message}
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+</script>
+<script type="text/template" id="text-message-template">
+    <div class="chat chat-text-dark">
+        <div class="chat-content">
+            <div class="chat-body w-max-520">
+            <div class="chat-main">
+                <div class="chat-item baloon">
+                <div class="chat-item-text">
+                    {message}
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/template" id="json-message-template">
+    <div class="chat chat-text-dark">
+        <div class="chat-content">
+            <div class="chat-body w-max-520">
+            <div class="chat-main">
+                <div class="chat-item baloon">
+                <div class="chat-item-text">
+                    <pre>{message}</pre>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/template" id="location-message-template">
+    <div class="chat chat-text-dark">
+        <div class="chat-content">
+            <div class="chat-body">
+            <div class="chat-main">
+                <div class="chat-item baloon">
+                <a class="chat-item-loc" href="https://www.google.com/maps/search/{address}" target="gmap">
+                <div class="chat-item-loc-sub">
+                    <fa class="fas fa-flag text-danger mx-2"></fa>
+                </div>
+                <div class="chat-item-loc-main">
+                    <div class="small">
+                    {address}
+                    </div>
+                </div>
+                <div class="chat-item-loc-sub">
+                    <fa class="fas fa-chevron-right text-muted mx-2"></fa>
+                </div>
+                </a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</script>
+<style type="text/css">
+  #aside-primary {
+    padding-left: 60px;
+    background: #344057;
+  }
+  #aside-primary #aside-btn-upper,
+  #aside-primary #aside-btn-lower {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  #aside-primary #aside-btn-upper .nav-btn,
+  #aside-primary #aside-btn-lower .nav-btn {
+    margin: 5px 0;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #7a8394;
+  }
+  #aside-primary #aside-btn-upper .nav-btn:hover,
+  #aside-primary #aside-btn-lower .nav-btn:hover {
+    color: #969dab;
+  }
+  #aside-primary #aside-btn-upper .nav-btn.active,
+  #aside-primary #aside-btn-lower .nav-btn.active {
+    color: #fff;
+  }
+  #aside-primary #aside-btn-lower {
+    top: auto;
+    bottom: 0;
+  }
+</style>
+<script>
+  $(function () {
+    $("#message-form").keydown(function (key) {
+        if (key.keyCode == 13){
+            $('#chat-room').append(
+                $('#my-message-template').html().replace(/{message}/g, $(this).val())
+            );
+            $.getJSON('answer', {
+                message: $(this).val()
+            }).done(function(data) {
+                switch(data.type) {
+                    case 'text':
+                    $('#chat-room').append(
+                        $('#text-message-template').html().replace(
+                            /{message}/g, data.text
+                        )
+                    ); break;
+                    case 'location':
+                    $('#chat-room').append(
+                        $('#location-message-template').html().replace(
+                            /{address}/g, data.address
+                        )
+                    ); break;
+                    default:
+                    $('#chat-room').append(
+                        $('#json-message-template').html().replace(
+                            /{message}/g, JSON.stringify(data, null, 2)
+                        )
+                    );
+
+                }
+                console.log(data);
+                $('#chat-room')[0].scrollTop = $('#chat-room')[0].scrollHeight;
+            })
+            $(this).val('');
+            $('#chat-room')[0].scrollTop = $('#chat-room')[0].scrollHeight;
+        }
+    });
+  });
+</script><script>
+    (function(g,d){
+    var v='release/stable';
+    g._trmq=[];g._trm=function(){g._trmq.push(arguments)};
+    g.onerror=function(m,f,l,c){g._trm('send','exception',m,f,l,c)};
+    var h=location.protocol==='https:'?'https://d.line-scdn.net':'http://d.line-cdn.net';
+    var s=d.createElement('script');s.async=1;
+    s.src=h+'/n/_4/torimochi.js/public/v1/'+v+'/min/torimochi.js';
+    var t=d.getElementsByTagName('script')[0];t.parentNode.insertBefore(s,t);
+    })(window, document);
+    
+    _trm('enable', { productKey: 'koromo' });
+    _trm('send', 'pageview');
+    _trm('performance', { rate: 0.05 });
+    </script>
+  </body>
+</html>

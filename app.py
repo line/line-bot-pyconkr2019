@@ -17,7 +17,7 @@ import os
 import re
 
 import requests
-from flask import Flask, request, abort
+from flask import Flask, request, abort, jsonify, render_template
 from linebot import LineBotApi, WebhookParser
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import (MessageEvent,
@@ -81,6 +81,16 @@ def get_message(from_message):
         return get_programs()
     else:
         return get_programs(from_message)
+
+
+@app.route('/chat')
+def chat():
+    return render_template('chat.html')
+
+
+@app.route('/answer')
+def get_answer():
+    return jsonify(get_message(request.values['message']).as_json_dict())
 
 
 @app.route("/callback", methods=['POST'])
