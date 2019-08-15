@@ -5,6 +5,7 @@ install:
 - pip freeze | xargs pip uninstall -y
 - pip install -r requirements.txt
 - pip install coveralls
+- pip install zappa
 before_install:
 script:
 - flake8 .
