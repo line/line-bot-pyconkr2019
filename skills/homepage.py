@@ -20,4 +20,5 @@ from skills import add_skill
 
 @add_skill(r'홈페이지')
 def get_location(message):
-    return TextSendMessage(text='안녕하세요. 파이콘 한국 2019의 행사 홈페이지 URL은 https://www.pycon.kr/ 입니다.')
+    return TextSendMessage(text='안녕하세요. 파이콘 한국 2019의 행사 홈페이지 URL은 '
+                                'https://www.pycon.kr/ 입니다.')
