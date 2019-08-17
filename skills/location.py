@@ -30,6 +30,7 @@ def get_location(message):
         longitude=127.0586111
     )
 
+
 @add_skill(r'지도')
 def get_coex_map(message):
     return TextSendMessage(
