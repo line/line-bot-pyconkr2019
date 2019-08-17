@@ -24,7 +24,7 @@ from random import randint
 @add_skill(r'랜덤세션')
 def get_location(message):
     location_list = [
-        "101호", "102호", "103호", 
+        "101호", "102호", "103호",
         "104호", "105호", "2층 열린공간", "느긋하게 스폰서 부스",
         ]
 
