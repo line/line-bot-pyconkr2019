@@ -15,6 +15,7 @@
 ```
 > pip install -r requirements.txt
 > flask run
+> http://127.0.0.1:5000/chat 에서 확인
 ```
 
 ## 기여하기
@@ -27,6 +28,7 @@
 * Python 3를 기반으로 합니다. Python 2는 지원하지 않습니다.
 * os, sys, eval 등 보안에 문제될 수 있는 코드는 거부될 수 있습니다.
 * `skills` 폴더 이외에는 기본적으로 기여를 권장하지 않습니다.
+* "메뉴" 추가 시에는 Conflict 방지를 위하여 마지막에 [trailing comma](https://wikidocs.net/7927) 를 넣어주세요
 
 ## 행동규범(CoC): Code of Conduct 
 
