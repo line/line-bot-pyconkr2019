@@ -25,7 +25,7 @@ from random import randint
 def get_location(message):
     location_list = [
         "101호", "102호", "103호", 
-        "104호", "105호", "2층 열린공간", "느긋하게 스폰서 부스"
+        "104호", "105호", "2층 열린공간", "느긋하게 스폰서 부스",
         ]
 
     switch = randint(0, len(location_list) - 1)
