@@ -20,10 +20,6 @@ def test_message():
     response = get_message('장소')
     assert response.type == 'location'
 
-    response = get_message('메뉴')
-    assert response.type == 'template'
-    assert response.alt_text == 'Welcome!'
-
     response = get_message('모든프로그램')
     assert response.type == 'template'
 
