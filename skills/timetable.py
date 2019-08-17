@@ -13,22 +13,13 @@
 #  under the License.
 
 
-from app import get_message
+from linebot.models import TextSendMessage
+
+from skills import add_skill
 
 
-def test_message():
-    response = get_message('장소')
-    assert response.type == 'location'
-
-    response = get_message('메뉴')
-    assert response.type == 'template'
-    assert response.alt_text == 'Welcome!'
-
-    response = get_message('프로그램')
-    assert response.type == 'template'
-
-    response = get_message('홈페이지')
-    assert response.type == 'text'
-
-    response = get_message('절대 안 나올 것 같은 질의')
-    assert response.type == 'text'
+@add_skill(r'시간표')
+def get_timetable(message):
+    return TextSendMessage(
+        text='시간표는 https://www.pycon.kr/timetable/talks 에서 확인해주세요'
+    )

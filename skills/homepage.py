@@ -13,22 +13,12 @@
 #  under the License.
 
 
-from app import get_message
+from linebot.models import TextSendMessage
+
+from skills import add_skill
 
 
-def test_message():
-    response = get_message('장소')
-    assert response.type == 'location'
-
-    response = get_message('메뉴')
-    assert response.type == 'template'
-    assert response.alt_text == 'Welcome!'
-
-    response = get_message('프로그램')
-    assert response.type == 'template'
-
-    response = get_message('홈페이지')
-    assert response.type == 'text'
-
-    response = get_message('절대 안 나올 것 같은 질의')
-    assert response.type == 'text'
+@add_skill(r'홈페이지')
+def get_location(message):
+    return TextSendMessage(text='안녕하세요. 파이콘 한국 2019의 행사 홈페이지 URL은 '
+                                'https://www.pycon.kr/ 입니다.')
