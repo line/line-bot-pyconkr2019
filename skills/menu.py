@@ -32,6 +32,21 @@ def get_menu(message):
             actions=[
                 MessageAction(label='장소', text='장소'),
                 MessageAction(label='프로그램', text='프로그램'),
+                MessageAction(label='열린 점심', text='열린 점심'),
+                URIAction(label='홈페이지', uri='https://www.pycon.kr/')
+            ]
+        )
+    )
+
+def get_lunch(message):
+    return TemplateSendMessage(
+        alt_text='열린 점심 위치',
+        template=ButtonsTemplate(
+            actions=[
+                MessageAction(label='장소', text='피알앤디컴퍼니'),
+                MessageAction(label='ML2', text='ML2'),
+                MessageAction(label='미래에셋대우', text='미래에셋대우'),
+                MessageAction(label='소프트웨어마이스터고등학교', text='소프트웨어마이스터고등학교'),
                 URIAction(label='홈페이지', uri='https://www.pycon.kr/')
             ]
         )
