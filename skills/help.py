@@ -30,7 +30,7 @@ def get_timetable(message):
     sperated_skill_list = []
 
     for skill_name in skill_list:
-        help_text = skills_help_text.get(skill_name, '이 기능은 도움말을 제공하지 않습니다.')
+        help_text = skills_help_text.get(skill_name)
         pure_skill_names = special_char.sub('', skill_name)
 
         if re.search(r'\|', pure_skill_names):
@@ -48,6 +48,7 @@ def make_guide(skills):
     for skill, help_text in skills:
         if isinstance(skill, list):
             skill = ', '.join(skill)
-        guide += f'• 🗣 "{skill}" 라고 물어봐주세요. \n ({help_text})\n\n'
+        guide += f'• 🗣 "{skill}" 라고 물어봐주세요. \n'
+        guide += f'({help_text})\n\n' if help_text else '\n'
 
     return guide
