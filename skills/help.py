@@ -21,10 +21,11 @@ from skills import skills as skill_list
 from skills import skills_help_text
 
 
-@add_skill(r'(헬프)|(help)|(도움)|(도와줘)', help_text='파이콘 한국 2019 도우미 LINE BOT이 제공하는 기능을 알려드립니다.')
+@add_skill(
+    pattern=r'(헬프)|(help)|(도움)|(도와줘)',
+    help_text='파이콘 한국 2019 도우미 LINE BOT이 제공하는 기능을 알려드립니다.'
+)
 def get_timetable(message):
-    global skill_list
-
     special_char = re.compile(r'[^a-zA-Z가-힣0-9\|]')
     sperated_skill_list = []
 
@@ -50,4 +51,3 @@ def make_guide(skills):
         guide += f'• 🗣 "{skill}" 라고 물어봐주세요. <br/> ({help_text})<br/><br/>'
 
     return guide
-
