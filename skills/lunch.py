@@ -13,13 +13,14 @@
 #  under the License.
 
 
-from linebot.models import LocationSendMessage
+
 from linebot.models import (ButtonsTemplate,
                             MessageAction,
                             TemplateSendMessage,
-                            URIAction,)
+                            )
 from linebot.models import TextSendMessage
 from skills import add_skill
+
 
 @add_skill(r'열린 점심')
 def get_lunch_sunday(message):
@@ -42,6 +43,7 @@ def get_lunch_pr(message):
     return TextSendMessage(
         text='일요일 오후 1시 ~ 2시 코엑스 그랜드볼룸 2층 209호B 피알앤디컴퍼니',
     )
+
 
 @add_skill(r'ML2')
 def get_lunch_ML2(message):
