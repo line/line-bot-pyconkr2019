@@ -38,7 +38,8 @@ def get_menu(message):
                     label='시간표',
                     uri='https://www.pycon.kr/timetable/talks'
                 ),
-                MessageAction(label="뭐듣지?", text='뭐듣지?'),             # 존댓말을 쓰면 자연스럽지 않은듯 해서 낮춤말을 사용했습니다.
+                # 존댓말을 쓰면 자연스럽지 않은듯 해서 낮춤말을 사용했습니다.
+                MessageAction(label="뭐듣지?", text='뭐듣지?'),
                 MessageAction(label="랜덤세션", text="랜덤세션"),
             ], key=lambda x: x.label, reverse=False)
         )
