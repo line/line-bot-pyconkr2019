@@ -13,7 +13,10 @@
 #  under the License.
 
 
-from linebot.models import LocationSendMessage
+from linebot.models import (
+    LocationSendMessage,
+    TextSendMessage,
+)
 
 from skills import add_skill
 
@@ -25,4 +28,11 @@ def get_location(message):
         address='서울 강남구 영동대로 513 (삼성동) 코엑스 그랜드볼룸',
         latitude=37.5130556,
         longitude=127.0586111
+    )
+
+
+@add_skill(r'지도')
+def get_coex_map(message):
+    return TextSendMessage(
+        text='지도는 http://www.coex.co.kr/blog/coex-reference/23249 에서 확인해주세요'
     )

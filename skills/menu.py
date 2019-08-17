@@ -34,6 +34,11 @@ def get_menu(message):
                 MessageAction(label='프로그램', text='프로그램'),
                 MessageAction(label='현재프로그램', text='현재프로그램'),
                 MessageAction(label='가위바위보', text='가위바위보'),
+                URIAction(
+                    label='지도',
+                    uri='http://www.coex.co.kr/blog/coex-reference/23249',
+                    alt_uri='http://www.coex.co.kr/blog/coex-reference/23251',
+                ),
                 URIAction(label='홈페이지', uri='https://www.pycon.kr/'),
                 URIAction(
                     label='시간표',
