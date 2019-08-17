@@ -48,6 +48,6 @@ def make_guide(skills):
     for skill, help_text in skills:
         if isinstance(skill, list):
             skill = ', '.join(skill)
-        guide += f'• 🗣 "{skill}" 라고 물어봐주세요. <br/> ({help_text})<br/><br/>'
+        guide += f'• 🗣 "{skill}" 라고 물어봐주세요. \n ({help_text})\n\n'
 
     return guide
