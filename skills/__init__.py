@@ -19,11 +19,21 @@ import glob
 
 modules = glob.glob(join(dirname(__file__), "*.py"))
 skills = dict()
+skills_help_text = dict()
 
 
-def add_skill(pattern):
+def add_skill(pattern, help_text=None):
+    """
+    라인 봇 기능 등록
+
+    :param pattern: 기능 선택 문자열 정규식 패턴
+    :param help_text: 기능 도움말
+    :return wrapper: 선택된 기능(함수)를 반환하는 함수
+    """
     def wrapper(func):
         skills[pattern] = func
+        if help_text is not None:
+            skills_help_text[pattern] = help_text
         return func
     return wrapper
 
