@@ -24,7 +24,7 @@ def test_message():
     assert response.type == 'template'
     assert response.alt_text == 'Welcome!'
 
-    response = get_message('프로그램')
+    response = get_message('모든프로그램')
     assert response.type == 'template'
 
     response = get_message('홈페이지')

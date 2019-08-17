@@ -77,7 +77,7 @@ def get_message(from_message):
         if re.match(pattern, from_message):
             return skill(from_message)
 
-    if '프로그램' in from_message:
+    if '모든프로그램' in from_message:
         return get_programs()
     else:
         return get_programs(from_message)
