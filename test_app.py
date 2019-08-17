@@ -32,3 +32,6 @@ def test_message():
 
     response = get_message('절대 안 나올 것 같은 질의')
     assert response.type == 'text'
+
+    response = get_message('헬프')
+    assert response.type == 'text'
