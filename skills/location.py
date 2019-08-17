@@ -18,7 +18,7 @@ from linebot.models import LocationSendMessage
 from skills import add_skill
 
 
-@add_skill(r'장소')
+@add_skill(r'장소', help_text='파이콘 2019 행사가 열리는 장소를 알려드릴게요.')
 def get_location(message):
     return LocationSendMessage(
         title='장소',

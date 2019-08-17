@@ -18,7 +18,7 @@ from linebot.models import TextSendMessage
 from skills import add_skill
 
 
-@add_skill(r'시간표')
+@add_skill(r'시간표', help_text='파이콘 2019 프로그램 시간표를 제공합니다.')
 def get_timetable(message):
     return TextSendMessage(
         text='시간표는 https://www.pycon.kr/timetable/talks 에서 확인해주세요'
