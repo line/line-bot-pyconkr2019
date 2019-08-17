@@ -32,6 +32,7 @@ def get_menu(message):
             actions=sorted([
                 MessageAction(label='장소', text='장소'),
                 MessageAction(label='프로그램', text='프로그램'),
+                MessageAction(label='가위바위보', text='가위바위보'),
                 URIAction(label='홈페이지', uri='https://www.pycon.kr/'),
                 URIAction(
                     label='시간표',
