@@ -31,3 +31,6 @@ def test_message():
 
     response = get_message('헬프')
     assert response.type == 'text'
+
+    response = get_message('라이트닝토크')
+    assert response.type == 'text'
