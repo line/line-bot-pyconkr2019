@@ -205,7 +205,7 @@
                     case 'text':
                     $('#chat-room').append(
                         $('#text-message-template').html().replace(
-                            /{message}/g, data.text
+                            /{message}/g, data.text.replace(/\n/g, "<br>")
                         )
                     ); break;
                     case 'location':
