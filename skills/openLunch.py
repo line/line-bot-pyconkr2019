@@ -13,7 +13,6 @@
 #  under the License.
 
 
-
 from linebot.models import (ButtonsTemplate,
                             MessageAction,
                             TemplateSendMessage,
