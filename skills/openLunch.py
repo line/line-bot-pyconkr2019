@@ -21,18 +21,19 @@ from linebot.models import TextSendMessage
 from skills import add_skill
 
 
-@add_skill(r'열린 점심')
+@add_skill(r'열린점심')
 def get_lunch_sunday(message):
     return TemplateSendMessage(
         alt_text='열린 점심 위치 안내',
         template=ButtonsTemplate(
             title='열린 점심',
+            text='열린 점심 목록입니다',
             actions=sorted([
-                MessageAction(text='피알앤디컴퍼니'),
-                MessageAction(text='ML2'),
-                MessageAction(text='미래에셋대우'),
-                MessageAction(text='SW마이스터고등학교'),
-            ], key=lambda x: x.text, reverse=False)
+                MessageAction(label='피알앤디컴퍼니', text='피알앤디컴퍼니'),
+                MessageAction(label='ML2', text='ML2'),
+                MessageAction(label='미래에셋대우', text='미래에셋대우'),
+                MessageAction(label='SW마이스터고등학교', text='SW마이스터고등학교')
+            ], key=lambda x: x.label, reverse=False)
         )
     )
 
@@ -58,7 +59,7 @@ def get_lunch_MIRAE(message):
     )
 
 
-@add_skill(r'소프트웨어마이스터고등학교')
+@add_skill(r'SW마이스터고등학교')
 def get_lunch_SW(message):
     return TextSendMessage(
         text='일요일 오후 12시 ~ 1시 30분 코엑스 그랜드볼룸 2층 209A호',
