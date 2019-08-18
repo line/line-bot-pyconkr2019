@@ -30,7 +30,8 @@ def get_current_program(message) -> TemplateSendMessage:
         CarouselColumn(
             thumbnail_image_url=program.owner.profile.image,
             title=limit_len(program.name, 40),
-            text=limit_len(program.desc, 60),
+            text=limit_len(program.desc if program.place is None
+                           else f"{program.place.name}, {program.desc}", 60),
             actions=[
                 URIAction(
                     label='자세히 보기',
