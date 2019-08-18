@@ -31,7 +31,7 @@ def get_location(message):
     )
 
 
-@add_skill(r'지도')
+@add_skill(r'[지도|코엑스 지도]', help_text='코엑스 지도를 알려드릴게요')
 def get_coex_map(message):
     return TextSendMessage(
         text='지도는 http://www.coex.co.kr/blog/coex-reference/23249 에서 확인해주세요'
