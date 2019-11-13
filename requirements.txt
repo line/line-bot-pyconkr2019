@@ -1,7 +1,7 @@
 requests==2.22.0
 flake8==3.7.9
 Flask==1.1.1
-line-bot-sdk==1.14.0
+line-bot-sdk==1.15.0
 marshmallow==3.0.5
 marshmallow-dataclass==0.6.6
 gunicorn==19.9.0
