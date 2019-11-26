@@ -3,6 +3,6 @@ flake8==3.7.9
 Flask==1.1.1
 line-bot-sdk==1.14.0
 marshmallow==3.0.5
-marshmallow-dataclass==0.6.6
+marshmallow-dataclass==7.1.1
 gunicorn==19.9.0
 pytest==5.1.2
